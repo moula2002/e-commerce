@@ -1,19 +1,20 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Banner from "./components/Banner";
-import CategoryRow from "./components/CategoryRow";
-import ProductList from "./components/ProductList";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "../src/components/Navbar";
+import HomePage from "../src/pages/Home";
+import ProductDetails from "../src/pages/ProductDetails";
+import CartPage from "./components/cartPage/CartPage";
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Banner />
-      <div className="container mt-4">
-        <CategoryRow />
-        <ProductList />
-      </div>
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/cart" element={<CartPage />} />
+      </Routes>
+    </Router>
   );
 }
 

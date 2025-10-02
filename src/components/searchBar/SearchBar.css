@@ -1,0 +1,74 @@
+/* SearchBar Container */
+.search-bar-container {
+  position: relative;
+  width: 400px;
+  max-width: 90%;
+}
+
+/* Input box */
+.search-input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 2px solid #ff9900;
+  border-radius: 20px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: #f7b500;
+  box-shadow: 0 0 5px rgba(255, 153, 0, 0.5);
+}
+
+/* Suggestion Dropdown */
+.search-results {
+  position: absolute;
+  top: 42px;               /* just below input */
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 999;            /* show above everything */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* Each item */
+.search-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.search-item:hover {
+  background: #f2f2f2;
+}
+
+/* Product Image inside dropdown */
+.search-item-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 12px;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.search-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-item small {
+  color: #555;
+  font-size: 13px;
+}
