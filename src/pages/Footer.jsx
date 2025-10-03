@@ -1,7 +1,8 @@
 // src/components/Footer.jsx
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Footer.css"; // Import the CSS file
+import "./Footer.css";
+
 
 const Footer = () => {
   return (
@@ -15,7 +16,7 @@ const Footer = () => {
               <li><a href="#" className="text-light text-decoration-none">About Us</a></li>
               <li><a href="#" className="text-light text-decoration-none">Careers</a></li>
               <li><a href="#" className="text-light text-decoration-none">Press Releases</a></li>
-              <li><a href="#" className="text-light text-decoration-none">Company Blog</a></li>
+              <li><a href="#" className="text-light text-decoration-none">Our Blog</a></li>
             </ul>
           </div>
 
@@ -35,7 +36,8 @@ const Footer = () => {
             <ul className="list-unstyled">
               <li><a href="#" className="text-light text-decoration-none">Sell on E-commerce.in</a></li>
               <li><a href="#" className="text-light text-decoration-none">Affiliate Program</a></li>
-              <li><a href="#" className="text-light text-decoration-none">Advertise Products</a></li>
+              <li><a href="#" className="text-light text-decoration-none">Advertise Your Products</a></li>
+              <li><a href="#" className="text-light text-decoration-none">Business Solutions</a></li>
             </ul>
           </div>
 
@@ -54,11 +56,10 @@ const Footer = () => {
         <hr className="bg-light" />
 
         {/* Footer Bottom */}
-        <div className="text-center py-3 footer-bottom">
-          <h4 className="footer-logo">
-            E-commerce<span className="footer-orange">.in</span>
-          </h4>
-          <p className="mb-0">© 2025 E-commerce.in - All Rights Reserved</p>
+        <div className="text-center py-3">
+          <p className="mb-0" style={{ fontWeight: "bold", fontSize: "18px" }}>
+            © 2025 E-commerce<span style={{color:"orange"}}>.in </span> - All Rights Reserved
+          </p>
         </div>
       </div>
     </footer>
