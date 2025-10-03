@@ -5,6 +5,7 @@ import { setLocation } from "../redux/store";
 import { setSearchQuery } from "../redux/productsSlice";
 import { Navbar, Nav, Button, Modal } from "react-bootstrap";
 import AuthPage from "../pages/LoginPage";
+import SecondHeader from "./searchBar/SecondHeader";
 import "./Navbar.css";
 
 export default function Header() {
@@ -12,17 +13,14 @@ export default function Header() {
   const navigate = useNavigate();
 
   const { location } = useSelector((state) => state.header);
-  const cartItems = useSelector(
-    (state) => (state.cart && state.cart.items ? state.cart.items : [])
-  );
-  const cartCount = Array.isArray(cartItems)
-    ? cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0)
-    : 0;
+  const cartItems = useSelector((state) => state.cart?.items || []);
+  const cartCount = cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
 
   const query = useSelector((state) => state.products.searchQuery);
-  const results = useSelector((state) => state.products.searchResults);
+  const results = useSelector((state) => state.products.searchResults || []);
 
   const [showAuthModal, setShowAuthModal] = useState(false);
+
   const openAuthModal = () => setShowAuthModal(true);
   const closeAuthModal = () => setShowAuthModal(false);
 
@@ -31,9 +29,7 @@ export default function Header() {
     if (newLoc) dispatch(setLocation(newLoc));
   };
 
-  const handleSearchChange = (e) => {
-    dispatch(setSearchQuery(e.target.value));
-  };
+  const handleSearchChange = (e) => dispatch(setSearchQuery(e.target.value));
 
   const handleClick = (id) => {
     dispatch(setSearchQuery(""));
@@ -44,17 +40,14 @@ export default function Header() {
 
   return (
     <>
+      {/* Top Navbar */}
       <Navbar className="navbar-custom px-3 sticky-top" expand="lg">
         <Navbar.Brand href="#" className="navbar-brand-custom">
           <span className="brand-white">E-commerce</span>
           <span className="brand-orange">.in</span>
         </Navbar.Brand>
 
-        <div
-          className="text-white ms-3 location"
-          style={{ cursor: "pointer" }}
-          onClick={changeLocation}
-        >
+        <div className="text-white ms-3 location" style={{ cursor: "pointer" }} onClick={changeLocation}>
           Delivering to <strong>{location}</strong>
         </div>
 
@@ -69,11 +62,7 @@ export default function Header() {
           {results.length > 0 && (
             <ul className="search-results">
               {results.map((item) => (
-                <li
-                  key={item.id}
-                  className="search-item"
-                  onClick={() => handleClick(item.id)}
-                >
+                <li key={item.id} className="search-item" onClick={() => handleClick(item.id)}>
                   <img src={item.image} alt={item.name} className="search-item-img" />
                   <div>
                     <div>{item.name}</div>
@@ -96,6 +85,10 @@ export default function Header() {
         </Nav>
       </Navbar>
 
+      {/* Bottom Menu */}
+      <SecondHeader />
+
+      {/* Auth Modal */}
       <Modal show={showAuthModal} onHide={closeAuthModal} centered>
         <Modal.Body>
           <AuthPage onClose={closeAuthModal} />

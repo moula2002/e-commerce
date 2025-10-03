@@ -9,7 +9,7 @@ function Banner() {
   return (
     <div className="banner-container text-center">
       <div className="banner-text">
-        <h2>Great Indian Festival ✨</h2>
+        <h2> Offer Mela Starting ✨</h2>
         <p>Get up to 80% off on Electronics, Fashion & More!</p>
       </div>
 
